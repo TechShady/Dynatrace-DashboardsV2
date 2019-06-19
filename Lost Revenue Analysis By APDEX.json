@@ -1,0 +1,233 @@
+﻿{
+  "metadata": {
+    "configurationVersions": [
+      2
+    ],
+    "clusterVersion": "1.173.0.20190618-192352"
+  },
+  "id": "3f8c04a0-fc98-452a-bf57-029c0828cf24",
+  "dashboardMetadata": {
+    "name": "💲 Lost Revenue Analysis By APDEX",
+    "shared": true,
+    "sharingDetails": {
+      "linkShared": false,
+      "published": false
+    },
+    "dashboardFilter": {
+      "timeframe": "l_2_HOURS",
+      "managementZone": {
+        "id": "3195562514000953408",
+        "name": "Azure"
+      }
+    }
+  },
+  "tiles": [
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 0,
+        "width": 304,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "😊",
+      "query": "select sum(doubleProperties.revenue) as \"Satisfied Lost Revenue\" FROM usersession where useraction.name != \"Finish\" and useraction.apdexCategory=\"SATISFIED\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 304,
+        "width": 1368,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "😊",
+      "query": "select DISTINCT DATETIME(starttime, \"HH:mm\", \"10m\") as \"Time\", sum(doubleProperties.revenue) as \"Satisfied Lost Revenue\" FROM usersession where useraction.name != \"Finish\" and useraction.apdexCategory=\"SATISFIED\"",
+      "type": "COLUMN_CHART"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 304,
+        "left": 0,
+        "width": 304,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "😟",
+      "query": "select sum(doubleProperties.revenue) as \"Tolerating Lost Revenue\" FROM usersession where useraction.name != \"Finish\"  and useraction.apdexCategory=\"TOLERATING\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 304,
+        "left": 304,
+        "width": 1368,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "😟",
+      "query": "select DISTINCT DATETIME(starttime, \"HH:mm\", \"10m\") as \"Time\", sum(doubleProperties.revenue) as \"Tolerating Lost Revenue\" FROM usersession where useraction.name != \"Finish\" and  useraction.apdexCategory=\"TOLERATING\"",
+      "type": "COLUMN_CHART"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 570,
+        "left": 0,
+        "width": 304,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "😢",
+      "query": "select sum(doubleProperties.revenue) as \"Frustrated Lost Revenue\" FROM usersession where useraction.name != \"Finish\"  and useraction.apdexCategory=\"FRUSTRATED\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 570,
+        "left": 304,
+        "width": 1368,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "😢",
+      "query": "select DISTINCT DATETIME(starttime, \"HH:mm\", \"10m\") as \"Time\", sum(doubleProperties.revenue) as \"Frustrated Lost Revenue\" FROM usersession where useraction.name != \"Finish\" and  useraction.apdexCategory=\"FRUSTRATED\"",
+      "type": "COLUMN_CHART"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 1368,
+        "width": 304,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Return to Revenue Analysis](#dashboard;id=f8c73b94-d5ef-4cbf-bcb8-d866c912630b)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 0,
+        "width": 266,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Satisfied Lost Revenue](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20UserId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Satisfied%20Lost%20Revenue%22%20FROM%20usersession%20where%20useraction.name%20!%3D%20%22Finish%22%20and%20useraction.apdexCategory%3D%22SATISFIED%22%20order%20by%20doubleProperties.revenue%20DESC&visualization=TABLE)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 266,
+        "left": 0,
+        "width": 304,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Tolerating Lost Revenue](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20UserId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Tolerating%20Lost%20Revenue%22%20FROM%20usersession%20where%20useraction.name%20!%3D%20%22Finish%22%20%20and%20useraction.apdexCategory%3D%22TOLERATING%22%20order%20by%20doubleProperties.revenue%20DESC&visualization=TABLE)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 532,
+        "left": 0,
+        "width": 304,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Frustrated Lost Revenue](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20UserId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Frustrated%20Lost%20Revenue%22%20FROM%20usersession%20where%20useraction.name%20!%3D%20%22Finish%22%20%20and%20useraction.apdexCategory%3D%22FRUSTRATED%22%20order%20by%20doubleProperties.revenue%20DESC&visualization=TABLE)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 304,
+        "width": 380,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Satisfied Lost Revenue Over Time](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20UserId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Satisfied%20Lost%20Revenue%22%20FROM%20usersession%20where%20useraction.name%20!%3D%20%22Finish%22%20and%20useraction.apdexCategory%3D%22SATISFIED%22%20order%20by%20doubleProperties.revenue%20DESC&visualization=COLUMN_CHART)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 266,
+        "left": 304,
+        "width": 380,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Tolerating Lost Revenue Over Time](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20UserId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Tolerating%20Lost%20Revenue%22%20FROM%20usersession%20where%20useraction.name%20!%3D%20%22Finish%22%20%20and%20useraction.apdexCategory%3D%22TOLERATING%22%20order%20by%20doubleProperties.revenue%20DESC&visualization=COLUMN_CHART)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 532,
+        "left": 304,
+        "width": 456,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Frustrated Lost Revenue Over Time](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20UserId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Frustrated%20Lost%20Revenue%22%20FROM%20usersession%20where%20useraction.name%20!%3D%20%22Finish%22%20%20and%20useraction.apdexCategory%3D%22FRUSTRATED%22%20order%20by%20doubleProperties.revenue%20DESC&visualization=COLUMN_CHART)"
+    }
+  ]
+}

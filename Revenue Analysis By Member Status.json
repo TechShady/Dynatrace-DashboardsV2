@@ -1,0 +1,233 @@
+﻿{
+  "metadata": {
+    "configurationVersions": [
+      2
+    ],
+    "clusterVersion": "1.173.0.20190618-192352"
+  },
+  "id": "54dd76c4-7d66-4fac-8bd2-8781dfddc4c5",
+  "dashboardMetadata": {
+    "name": "💲 Revenue Analysis By Member Status",
+    "shared": true,
+    "sharingDetails": {
+      "linkShared": false,
+      "published": false
+    },
+    "dashboardFilter": {
+      "timeframe": "l_2_HOURS",
+      "managementZone": {
+        "id": "3195562514000953408",
+        "name": "Azure"
+      }
+    }
+  },
+  "tiles": [
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 0,
+        "width": 304,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "🥇",
+      "query": "select sum(doubleProperties.revenue) as \"Platinum Revenue\" FROM usersession where useraction.name = \"Finish\" and stringProperties.memberstatus=\"Platinum\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 304,
+        "width": 1368,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "🥇",
+      "query": "select DISTINCT DATETIME(starttime, \"HH:mm\", \"10m\") as \"Time\", sum(doubleProperties.revenue) as \"Platinum Revenue\" FROM usersession where useraction.name = \"Finish\" and stringProperties.memberstatus=\"Platinum\"",
+      "type": "COLUMN_CHART"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 304,
+        "left": 0,
+        "width": 304,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "🥈",
+      "query": "select sum(doubleProperties.revenue) as \"Gold Revenue\" FROM usersession where useraction.name = \"Finish\" and stringProperties.memberstatus=\"Gold\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 304,
+        "left": 304,
+        "width": 1368,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "🥈",
+      "query": "select DISTINCT DATETIME(starttime, \"HH:mm\", \"10m\") as \"Time\", sum(doubleProperties.revenue) as \"Gold Revenue\" FROM usersession where useraction.name = \"Finish\" and  stringProperties.memberstatus=\"Gold\"",
+      "type": "COLUMN_CHART"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 570,
+        "left": 0,
+        "width": 304,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "🥉",
+      "query": "select sum(doubleProperties.revenue) as \"Silver Revenue\" FROM usersession where useraction.name = \"Finish\" and stringProperties.memberstatus=\"Silver\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 570,
+        "left": 304,
+        "width": 1368,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "🥉",
+      "query": "select DISTINCT DATETIME(starttime, \"HH:mm\", \"10m\") as \"Time\", sum(doubleProperties.revenue) as \"Silver Revenue\" FROM usersession where useraction.name = \"Finish\" and  stringProperties.memberstatus=\"Silver\"",
+      "type": "COLUMN_CHART"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 1368,
+        "width": 304,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Return to Revenue Analysis](#dashboard;id=f8c73b94-d5ef-4cbf-bcb8-d866c912630b)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 0,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Platinum Revenue](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20UserId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Platinum%20Revenue%22%20FROM%20usersession%20where%20useraction.name%20%3D%20%22Finish%22%20and%20stringProperties.memberstatus%3D%22Platinum%22%20and%20doubleProperties.revenue%3E0%20order%20by%20doubleProperties.revenue%20desc&visualization=TABLE)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 266,
+        "left": 0,
+        "width": 190,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Gold Revenue](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20UserId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Gold%20Revenue%22%20FROM%20usersession%20where%20useraction.name%20%3D%20%22Finish%22%20and%20stringProperties.memberstatus%3D%22Gold%22%20and%20doubleProperties.revenue%3E0%20order%20by%20doubleProperties.revenue%20desc&visualization=TABLE)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 532,
+        "left": 0,
+        "width": 266,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Silver Revenue](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20UserId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Silver%20Revenue%22%20FROM%20usersession%20where%20useraction.name%20%3D%20%22Finish%22%20and%20stringProperties.memberstatus%3D%22Silver%22%20and%20doubleProperties.revenue%3E0%20order%20by%20doubleProperties.revenue%20desc&visualization=TABLE)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 304,
+        "width": 304,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Platinum Revenue Over Time](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20UserId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Platinum%20Revenue%22%20FROM%20usersession%20where%20useraction.name%20%3D%20%22Finish%22%20and%20stringProperties.memberstatus%3D%22Platinum%22%20and%20doubleProperties.revenue%3E0%20order%20by%20doubleProperties.revenue%20desc&visualization=COLUMN_CHART)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 266,
+        "left": 304,
+        "width": 304,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Gold Revenue Over Time](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20UserId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Gold%20Revenue%22%20FROM%20usersession%20where%20useraction.name%20%3D%20%22Finish%22%20and%20stringProperties.memberstatus%3D%22Gold%22%20and%20doubleProperties.revenue%3E0%20order%20by%20doubleProperties.revenue%20desc&visualization=COLUMN_CHART)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 532,
+        "left": 304,
+        "width": 304,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Silver Revenue Over Time](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20UserId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Silver%20Revenue%22%20FROM%20usersession%20where%20useraction.name%20%3D%20%22Finish%22%20and%20stringProperties.memberstatus%3D%22Silver%22%20and%20doubleProperties.revenue%3E0%20order%20by%20doubleProperties.revenue%20desc&visualization=COLUMN_CHART)"
+    }
+  ]
+}

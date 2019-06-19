@@ -1,0 +1,323 @@
+﻿{
+  "metadata": {
+    "configurationVersions": [
+      2
+    ],
+    "clusterVersion": "1.173.0.20190618-192352"
+  },
+  "id": "ba9ecfe5-e7ec-451d-a187-060a724dde51",
+  "dashboardMetadata": {
+    "name": "🏁 Bookings Analysis",
+    "shared": true,
+    "sharingDetails": {
+      "linkShared": false,
+      "published": false
+    },
+    "dashboardFilter": {
+      "timeframe": "l_2_HOURS",
+      "managementZone": {
+        "id": "3195562514000953408",
+        "name": "Azure"
+      }
+    }
+  },
+  "tiles": [
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 76,
+        "left": 532,
+        "width": 266,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "🥉",
+      "query": "select count(distinct userSessionId) as \"Silver Bookings Count\" FROM usersession where\n\tstringProperties.memberstatus=\"Silver\" and useraction.name=\"Finish\" and\n\tdoubleProperties.revenue>0\n",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 76,
+        "left": 266,
+        "width": 266,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "🥈",
+      "query": "select count(distinct userSessionId) as \"Gold Bookings Count\" FROM usersession where\n\tstringProperties.memberstatus=\"Gold\" and useraction.name=\"Finish\" and\n\tdoubleProperties.revenue>0\n",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 76,
+        "left": 0,
+        "width": 266,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "🥇",
+      "query": "select count(distinct userSessionId) as \"Gold Bookings Count\" FROM usersession where\n\tstringProperties.memberstatus=\"Platinum\" and useraction.name=\"Finish\" and\n\tdoubleProperties.revenue>0\n",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "Bookings By Member Status",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 266,
+        "width": 456,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      }
+    },
+    {
+      "name": "Bookings By APDEX",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 1140,
+        "width": 304,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      }
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 76,
+        "left": 874,
+        "width": 266,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "😊",
+      "query": "select count(distinct userSessionId) as \"Satisfied Bookings Count\" FROM usersession where\n\tuseraction.apdexCategory=\"SATISFIED\" and useraction.name=\"Finish\" and\n\tdoubleProperties.revenue>0\n",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 76,
+        "left": 1140,
+        "width": 266,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "😟",
+      "query": "select count(distinct userSessionId) as \"Tolerating Bookings Count\" FROM usersession where\n\tuseraction.apdexCategory=\"TOLERATING\" and useraction.name=\"Finish\" and\n\tdoubleProperties.revenue>0\n",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 76,
+        "left": 1406,
+        "width": 266,
+        "height": 228
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "😢",
+      "query": "select count(distinct userSessionId) as \"Frustrated Bookings Count\" FROM usersession where\n\tuseraction.apdexCategory=\"FRUSTRATED\" and useraction.name=\"Finish\" and\n\tdoubleProperties.revenue>0\n",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 380,
+        "left": 0,
+        "width": 798,
+        "height": 456
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "🏁",
+      "query": "select TOP(stringProperties.destination, 10), sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where stringProperties.destination IS NOT NULL and doubleProperties.revenue>0 and stringProperties.destination!=\"Expiration Date\" group BY stringProperties.destination order by sum(doubleProperties.revenue) DESC",
+      "type": "COLUMN_CHART"
+    },
+    {
+      "name": "Revenue by Destination",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 342,
+        "left": 266,
+        "width": 304,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      }
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 1482,
+        "width": 190,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Return to Funnel](#dashboard;id=65312f05-ca6c-4896-b2b4-1bc8ce334930)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 0,
+        "width": 266,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Platinum](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20userId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Revenue%22%20FROM%20usersession%20where%0A%09stringProperties.memberstatus%3D%22Platinum%22%20and%20useraction.name%3D%22Finish%22%20and%0A%09doubleProperties.revenue%3E0%20order%20by%20doubleProperties.revenue%20desc%0A&visualization=TABLE)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 266,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Gold](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20userId%20as%20\"User\",%20doubleProperties.revenue%20as%20\"Revenue\"%20FROM%20usersession%20where%0A%09stringProperties.memberstatus%3D\"Gold\"%20and%20useraction.name%3D\"Finish\"%20and%0A%09doubleProperties.revenue>0%20order%20by%20doubleProperties.revenue%20desc%0A&visualization=TABLE)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 532,
+        "width": 190,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Silver](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20userId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Revenue%22%20FROM%20usersession%20where%0A%09stringProperties.memberstatus%3D%22Silver%22%20and%20useraction.name%3D%22Finish%22%20and%0A%09doubleProperties.revenue%3E0%20order%20by%20doubleProperties.revenue%20desc%0A&visualization=TABLE)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 874,
+        "width": 266,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Satisfied](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20userId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Revenue%22%20FROM%20usersession%20where%0A%09useraction.apdexCategory%3D%22SATISFIED%22%20and%20useraction.name%3D%22Finish%22%20and%0A%09doubleProperties.revenue%3E0%20order%20by%20doubleProperties.revenue%20desc%0A&visualization=TABLE)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 1140,
+        "width": 190,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Tolerating](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20userId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Revenue%22%20FROM%20usersession%20where%0A%09useraction.apdexCategory%3D%22TOLERATING%22%20and%20useraction.name%3D%22Finish%22%20and%0A%09doubleProperties.revenue%3E0%20order%20by%20doubleProperties.revenue%20desc%0A&visualization=TABLE)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 1406,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## [Frustrated](https://bwg49630.dev.dynatracelabs.com/ui/user-sessions/query?sessionquery=select%20userId%20as%20%22User%22,%20doubleProperties.revenue%20as%20%22Revenue%22%20FROM%20usersession%20where%0A%09useraction.apdexCategory%3D%22FRUSTRATED%22%20and%20useraction.name%3D%22Finish%22%20and%0A%09doubleProperties.revenue%3E0%20order%20by%20doubleProperties.revenue%20desc%0A&visualization=TABLE)"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 380,
+        "left": 874,
+        "width": 798,
+        "height": 456
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "🏁",
+      "query": "select TOP(stringProperties.destination, 10), count(*) as \"Bookings\" FROM usersession where stringProperties.destination IS NOT NULL and doubleProperties.revenue>0 and stringProperties.destination!=\"Expiration Date\" group BY stringProperties.destination order by count(*) DESC",
+      "type": "COLUMN_CHART"
+    },
+    {
+      "name": "Bookings by Destination",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 333,
+        "left": 1140,
+        "width": 304,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      }
+    }
+  ]
+}

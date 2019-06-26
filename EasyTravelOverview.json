@@ -1,1 +1,528 @@
-{"metadata":{"configurationVersions":[2],"clusterVersion":"1.174.0.20190625-204951"},"id":"6e481cc8-bea9-46ba-b1f8-23ebcc151088","dashboardMetadata":{"name":"\uD83D\uDE80 EasyTravel Overview","shared":true,"owner":"techshadyjk@ruxitlabs.com","sharingDetails":{"linkShared":false,"published":false},"dashboardFilter":{"timeframe":"l_7_DAYS","managementZone":null}},"tiles":[{"name":"Markdown","tileType":"MARKDOWN","configured":true,"bounds":{"top":0,"left":456,"width":228,"height":38},"tileFilter":{"managementZone":null},"markdown":"## \uD83D\uDCB0 [Revenue Analysis](#dashboard;id=f8c73b94-d5ef-4cbf-bcb8-d866c912630b)"},{"name":"Markdown","tileType":"MARKDOWN","configured":true,"bounds":{"top":0,"left":950,"width":266,"height":38},"tileFilter":{"managementZone":null},"markdown":"## \uD83D\uDED2 [Book Travel Funnel](#dashboard;id=65312f05-ca6c-4896-b2b4-1bc8ce334930)"},{"name":"Revenue vs Duration","tileType":"HEADER","configured":true,"bounds":{"top":304,"left":722,"width":304,"height":38},"tileFilter":{"managementZone":null}},{"name":"Service health","tileType":"SERVICES","configured":true,"bounds":{"top":0,"left":152,"width":152,"height":152},"tileFilter":{"managementZone":null},"filterConfig":null,"chartVisible":true},{"name":"Application health","tileType":"APPLICATIONS","configured":true,"bounds":{"top":0,"left":0,"width":152,"height":152},"tileFilter":{"managementZone":null},"filterConfig":null,"chartVisible":true},{"name":"Host health","tileType":"HOSTS","configured":true,"bounds":{"top":0,"left":304,"width":152,"height":152},"tileFilter":{"managementZone":null},"filterConfig":null,"chartVisible":true},{"name":"Markdown","tileType":"MARKDOWN","configured":true,"bounds":{"top":0,"left":722,"width":228,"height":38},"tileFilter":{"managementZone":null},"markdown":"## \uD83D\uDC6E‍♂️ [Release Validation](#dashboard;id=3e951fbb-3eb4-4f40-a5fe-61ce92ba96b2)"},{"name":"Markdown","tileType":"MARKDOWN","configured":true,"bounds":{"top":152,"left":950,"width":266,"height":38},"tileFilter":{"managementZone":null},"markdown":"## \uD83D\uDCA8 [Book Travel Workflow](#dashboard;id=40fad9b3-22db-40ce-b80d-206c5b278016)"},{"name":"Custom chart","tileType":"CUSTOM_CHARTING","configured":true,"bounds":{"top":342,"left":0,"width":1672,"height":494},"tileFilter":{"managementZone":null},"filterConfig":{"type":"MIXED","customName":"\uD83D\uDCB2 vs ⏱","defaultName":"Custom chart","chartConfig":{"type":"TIMESERIES","series":[{"metric":"calc:service.revenue","aggregation":"SUM","percentile":null,"type":"BAR","entityType":"SERVICE","dimensions":[{"id":"total","values":[],"usedForSplitting":true,"entityDimension":false}],"sortAscending":false,"sortColumn":true},{"metric":"builtin:apps.web.actionDuration.xhr.browser","aggregation":"MAX","percentile":null,"type":"LINE","entityType":"APPLICATION","dimensions":[{"id":"BROWSER","values":[],"usedForSplitting":false,"entityDimension":true}],"sortAscending":false,"sortColumn":true}],"resultMetadata":{"SERVICE-3565EE4672B3F239¦total»...»false":{"lastModified":1557755596392,"customColor":"#00994C"},"SERVICE-3565EE4672B3F239¦total»'...'»false":{"lastModified":1559011385969,"customColor":"#228B22"},"APPLICATION-5AD6A7D5C4E82EED":{"lastModified":1557755799430,"customColor":"#ffdf00"},"APPLICATION-47BC936AA98D6E88":{"lastModified":1557755439777,"customColor":"#FFDF00"},"APPLICATION_METHOD-80778A3936F79D8C":{"lastModified":1557755128536,"customColor":"#fff29a"}}},"filtersPerEntityType":{}}},{"name":"Markdown","tileType":"MARKDOWN","configured":true,"bounds":{"top":228,"left":456,"width":228,"height":38},"tileFilter":{"managementZone":null},"markdown":"## \uD83D\uDD0E [Diagnostics](#diagnostictools)"},{"name":"Markdown","tileType":"MARKDOWN","configured":true,"bounds":{"top":152,"left":722,"width":228,"height":38},"tileFilter":{"managementZone":null},"markdown":"## \uD83D\uDCCA [Key Services](#dashboard;id=1df15a9f-8dc8-4e47-9ae6-3cc8c5252cec)"},{"name":"Markdown","tileType":"MARKDOWN","configured":true,"bounds":{"top":228,"left":722,"width":190,"height":38},"tileFilter":{"managementZone":null},"markdown":"## \uD83D\uDDFD[All PurePaths](#servicecalls;timeframe=last2h)"},{"name":"Markdown","tileType":"MARKDOWN","configured":true,"bounds":{"top":228,"left":950,"width":228,"height":38},"tileFilter":{"managementZone":null},"markdown":"## \uD83D\uDDFD[Slow PurePaths](#servicecalls;timeframe=last2h;servicefilter=0%1E0%113000000%144611686018427387)"},{"name":"Custom chart","tileType":"CUSTOM_CHARTING","configured":true,"bounds":{"top":0,"left":1216,"width":152,"height":152},"tileFilter":{"managementZone":null},"filterConfig":{"type":"MIXED","customName":"Conversion Rate","defaultName":"Custom chart","chartConfig":{"type":"SINGLE_VALUE","series":[{"metric":"builtin:apps.web.conversionRate","aggregation":"AVG","percentile":null,"type":"LINE","entityType":"MONITORED_ENTITY˟APPLICATION_ENTITY","dimensions":[{"id":"1","values":[],"usedForSplitting":false,"entityDimension":false},{"id":"2","values":[],"usedForSplitting":false,"entityDimension":false}],"sortAscending":false,"sortColumn":true}],"resultMetadata":{}},"filtersPerEntityType":{}}},{"name":"User Sessions Query","tileType":"DTAQL","configured":true,"bounds":{"top":0,"left":1368,"width":152,"height":152},"tileFilter":{"managementZone":null},"customName":"Revenue","query":"select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"Finish\"","type":"SINGLE_VALUE"},{"name":"User Sessions Query","tileType":"DTAQL","configured":true,"bounds":{"top":0,"left":1520,"width":152,"height":152},"tileFilter":{"managementZone":null},"customName":"Lost Revenue","query":"select sum(doubleProperties.revenue) as \"Lost Revenue\" FROM usersession where useraction.name!=\"Finish\"","type":"SINGLE_VALUE"},{"name":"","tileType":"SERVICES","configured":true,"bounds":{"top":152,"left":152,"width":152,"height":152},"tileFilter":{"managementZone":null},"filterConfig":{"type":"SERVICE","customName":"Impacted Services","defaultName":"Impacted Services","chartConfig":{"type":"TIMESERIES","series":[],"resultMetadata":{}},"filtersPerEntityType":{"SERVICE":{"PROBLEM_IMPACT":["true"]}}},"chartVisible":true},{"name":"","tileType":"HOSTS","configured":true,"bounds":{"top":152,"left":304,"width":152,"height":152},"tileFilter":{"managementZone":null},"filterConfig":{"type":"HOST","customName":"Impacted Hosts","defaultName":"Impacted Hosts","chartConfig":{"type":"TIMESERIES","series":[],"resultMetadata":{}},"filtersPerEntityType":{"HOST":{"PROBLEM_IMPACT":["true"]}}},"chartVisible":true},{"name":"User Sessions Query","tileType":"DTAQL","configured":true,"bounds":{"top":152,"left":0,"width":152,"height":152},"tileFilter":{"managementZone":null},"customName":"Rage Clicks","query":"select sum(numberOfRageClicks) as \"Rage Clicks\" FROM usersession ","type":"SINGLE_VALUE"},{"name":"User Sessions Query","tileType":"DTAQL","configured":true,"bounds":{"top":152,"left":1368,"width":152,"height":152},"tileFilter":{"managementZone":null},"customName":"Duration","query":"select avg(duration) as \"Avg\" FROM useraction ","type":"SINGLE_VALUE"},{"name":"DTAQL","tileType":"DTAQL","configured":true,"bounds":{"top":152,"left":1520,"width":152,"height":152},"tileFilter":{"managementZone":null},"customName":"Visually Complete","query":"select avg(visuallyCompleteTime) as \"Avg\" FROM useraction where name in (\"Home\",\"Review\",\"Payment\",\"Finish\")","type":"SINGLE_VALUE"},{"name":"DTAQL","tileType":"DTAQL","configured":true,"bounds":{"top":152,"left":1216,"width":152,"height":152},"tileFilter":{"managementZone":null},"customName":"Funnel Steps","query":"select count(*) as \"Count\" FROM useraction where name in (\"Home\",\"Review\",\"Payment\",\"Finish\")","type":"SINGLE_VALUE"},{"name":"Markdown","tileType":"MARKDOWN","configured":true,"bounds":{"top":76,"left":456,"width":266,"height":38},"tileFilter":{"managementZone":null},"markdown":"## \uD83C\uDFC1 [Conversion Analysis](#dashboard;id=ba9ecfe5-e7ec-451d-a187-060a724dde51)"},{"name":"Markdown","tileType":"MARKDOWN","configured":true,"bounds":{"top":76,"left":722,"width":228,"height":38},"tileFilter":{"managementZone":null},"markdown":"## ☠ [Abandon Analysis](#dashboard;id=7afde609-dbbe-486f-b2c0-0bde4c4d1d7c)"},{"name":"Markdown","tileType":"MARKDOWN","configured":true,"bounds":{"top":76,"left":950,"width":228,"height":38},"tileFilter":{"managementZone":null},"markdown":"## \uD83C\uDFCC️‍♂️ [Member Analysis](#dashboard;id=61b041e1-e4e0-4830-938b-a0e93e0f47e3)"},{"name":"Markdown","tileType":"MARKDOWN","configured":true,"bounds":{"top":152,"left":456,"width":266,"height":38},"tileFilter":{"managementZone":null},"markdown":"## \uD83C\uDFDD [Destination Analysis](#dashboard;id=e3982c72-1105-4920-9ed1-a9884d85ec54)"}]}
+﻿{
+  "metadata": {
+    "configurationVersions": [
+      2
+    ],
+    "clusterVersion": "1.174.0.20190625-204951"
+  },
+  "id": "6e481cc8-bea9-46ba-b1f8-23ebcc151088",
+  "dashboardMetadata": {
+    "name": "🚀 EasyTravel Overview",
+    "shared": true,
+    "owner": "techshadyjk@ruxitlabs.com",
+    "sharingDetails": {
+      "linkShared": false,
+      "published": false
+    },
+    "dashboardFilter": {
+      "timeframe": "l_7_DAYS",
+      "managementZone": null
+    }
+  },
+  "tiles": [
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 456,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## 💰 [Revenue Analysis](#dashboard;id=f8c73b94-d5ef-4cbf-bcb8-d866c912630b)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 950,
+        "width": 266,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## 🛒 [Book Travel Funnel](#dashboard;id=65312f05-ca6c-4896-b2b4-1bc8ce334930)"
+    },
+    {
+      "name": "Revenue vs Duration",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 304,
+        "left": 722,
+        "width": 304,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      }
+    },
+    {
+      "name": "Service health",
+      "tileType": "SERVICES",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 152,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "filterConfig": null,
+      "chartVisible": true
+    },
+    {
+      "name": "Application health",
+      "tileType": "APPLICATIONS",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 0,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "filterConfig": null,
+      "chartVisible": true
+    },
+    {
+      "name": "Host health",
+      "tileType": "HOSTS",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 304,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "filterConfig": null,
+      "chartVisible": true
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 722,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## 👮‍♂️ [Release Validation](#dashboard;id=3e951fbb-3eb4-4f40-a5fe-61ce92ba96b2)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 950,
+        "width": 266,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## 💨 [Book Travel Workflow](#dashboard;id=40fad9b3-22db-40ce-b80d-206c5b278016)"
+    },
+    {
+      "name": "Custom chart",
+      "tileType": "CUSTOM_CHARTING",
+      "configured": true,
+      "bounds": {
+        "top": 342,
+        "left": 0,
+        "width": 1672,
+        "height": 494
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "filterConfig": {
+        "type": "MIXED",
+        "customName": "💲 vs ⏱",
+        "defaultName": "Custom chart",
+        "chartConfig": {
+          "type": "TIMESERIES",
+          "series": [
+            {
+              "metric": "calc:service.revenue",
+              "aggregation": "SUM",
+              "percentile": null,
+              "type": "BAR",
+              "entityType": "SERVICE",
+              "dimensions": [
+                {
+                  "id": "total",
+                  "values": [],
+                  "usedForSplitting": true,
+                  "entityDimension": false
+                }
+              ],
+              "sortAscending": false,
+              "sortColumn": true
+            },
+            {
+              "metric": "builtin:apps.web.actionDuration.xhr.browser",
+              "aggregation": "MAX",
+              "percentile": null,
+              "type": "LINE",
+              "entityType": "APPLICATION",
+              "dimensions": [
+                {
+                  "id": "BROWSER",
+                  "values": [],
+                  "usedForSplitting": false,
+                  "entityDimension": true
+                }
+              ],
+              "sortAscending": false,
+              "sortColumn": true
+            }
+          ],
+          "resultMetadata": {
+            "SERVICE-3565EE4672B3F239¦total»...»false": {
+              "lastModified": 1557755596392,
+              "customColor": "#00994C"
+            },
+            "SERVICE-3565EE4672B3F239¦total»'...'»false": {
+              "lastModified": 1559011385969,
+              "customColor": "#228B22"
+            },
+            "APPLICATION-5AD6A7D5C4E82EED": {
+              "lastModified": 1557755799430,
+              "customColor": "#ffdf00"
+            },
+            "APPLICATION-47BC936AA98D6E88": {
+              "lastModified": 1557755439777,
+              "customColor": "#FFDF00"
+            },
+            "APPLICATION_METHOD-80778A3936F79D8C": {
+              "lastModified": 1557755128536,
+              "customColor": "#fff29a"
+            }
+          }
+        },
+        "filtersPerEntityType": {}
+      }
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 228,
+        "left": 456,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## 🔎 [Diagnostics](#diagnostictools)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 722,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## 📊 [Key Services](#dashboard;id=1df15a9f-8dc8-4e47-9ae6-3cc8c5252cec)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 228,
+        "left": 722,
+        "width": 190,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## 🗽[All PurePaths](#servicecalls;timeframe=last2h)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 228,
+        "left": 950,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## 🗽[Slow PurePaths](#servicecalls;timeframe=last2h;servicefilter=0%1E0%113000000%144611686018427387)"
+    },
+    {
+      "name": "Custom chart",
+      "tileType": "CUSTOM_CHARTING",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 1216,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "filterConfig": {
+        "type": "MIXED",
+        "customName": "Conversion Rate",
+        "defaultName": "Custom chart",
+        "chartConfig": {
+          "type": "SINGLE_VALUE",
+          "series": [
+            {
+              "metric": "builtin:apps.web.conversionRate",
+              "aggregation": "AVG",
+              "percentile": null,
+              "type": "LINE",
+              "entityType": "MONITORED_ENTITY˟APPLICATION_ENTITY",
+              "dimensions": [
+                {
+                  "id": "1",
+                  "values": [],
+                  "usedForSplitting": false,
+                  "entityDimension": false
+                },
+                {
+                  "id": "2",
+                  "values": [],
+                  "usedForSplitting": false,
+                  "entityDimension": false
+                }
+              ],
+              "sortAscending": false,
+              "sortColumn": true
+            }
+          ],
+          "resultMetadata": {}
+        },
+        "filtersPerEntityType": {}
+      }
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 1368,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "Revenue",
+      "query": "select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"Finish\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 1520,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "Lost Revenue",
+      "query": "select sum(doubleProperties.revenue) as \"Lost Revenue\" FROM usersession where useraction.name!=\"Finish\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 0,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "Rage Clicks",
+      "query": "select sum(numberOfRageClicks) as \"Rage Clicks\" FROM usersession ",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 1368,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "Duration",
+      "query": "select avg(duration) as \"Avg\" FROM useraction ",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 1520,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "Visually Complete",
+      "query": "select avg(visuallyCompleteTime) as \"Avg\" FROM useraction where name in (\"Home\",\"Review\",\"Payment\",\"Finish\")",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 1216,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "customName": "Funnel Steps",
+      "query": "select count(*) as \"Count\" FROM useraction where name in (\"Home\",\"Review\",\"Payment\",\"Finish\")",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 76,
+        "left": 456,
+        "width": 266,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## 🏁 [Conversion Analysis](#dashboard;id=ba9ecfe5-e7ec-451d-a187-060a724dde51)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 76,
+        "left": 722,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## ☠ [Abandon Analysis](#dashboard;id=7afde609-dbbe-486f-b2c0-0bde4c4d1d7c)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 76,
+        "left": 950,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## 🏌️‍♂️ [Member Analysis](#dashboard;id=61b041e1-e4e0-4830-938b-a0e93e0f47e3)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 456,
+        "width": 266,
+        "height": 38
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "markdown": "## 🏝 [Destination Analysis](#dashboard;id=e3982c72-1105-4920-9ed1-a9884d85ec54)"
+    },
+    {
+      "name": "Database health",
+      "tileType": "DATABASES_OVERVIEW",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 304,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {
+        "managementZone": null
+      },
+      "filterConfig": null,
+      "chartVisible": true
+    },
+    {
+      "name": "Problems",
+      "tileType": "OPEN_PROBLEMS",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 152,
+        "width": 152,
+        "height": 152
+      },
+      "tileFilter": {
+        "managementZone": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,836 @@
+﻿{
+  "metadata": {
+    "configurationVersions": [
+      2
+    ],
+    "clusterVersion": "1.176.0.20190811-211735"
+  },
+  "id": "6e481cc8-bea9-46ba-b1f8-23ebcc1da313",
+  "dashboardMetadata": {
+    "name": "🚀 MyApp Overview",
+    "shared": true,
+    "owner": "MyEmail",
+    "sharingDetails": {
+      "linkShared": false,
+      "published": false
+    },
+    "dashboardFilter": {
+      "timeframe": "l_2_HOURS",
+      "managementZone": null
+    }
+  },
+  "tiles": [
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 228,
+        "left": 1368,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 💰 [Revenue Analysis](#dashboard;id=f8c73b94-d5ef-4cbf-bcb8-d866c91da313)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 1368,
+        "width": 266,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 🛒 [MyFunnel](#dashboard;id=65312f05-ca6c-4896-b2b4-1bc8ce3da313)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 760,
+        "left": 456,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 🔎 [All PurePaths](#servicecalls;timeframe=last2h)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 760,
+        "left": 684,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 🔎 [Slow PurePaths](#servicecalls;timeframe=last2h;servicefilter=0%1E0%1118000000%144611686018427387)"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 0,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Revenue",
+      "query": "select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"LastStep\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 456,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Lost Revenue",
+      "query": "select sum(doubleProperties.revenue) as \"Lost Revenue\" FROM usersession where useraction.name!=\"LastStep\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 304,
+        "left": 684,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Rage Clicks",
+      "query": "select sum(numberOfRageClicks) as \"Rage Clicks\" FROM usersession ",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 304,
+        "left": 1368,
+        "width": 266,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 🏁 [Conversion Analysis](#dashboard;id=ba9ecfe5-e7ec-451d-a187-060a724da313)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 380,
+        "left": 1368,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 💀 [Abandon Analysis](#dashboard;id=7afde609-dbbe-486f-b2c0-0bde4c4da313)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 608,
+        "left": 1368,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 😡 [Rage Analysis](#dashboard;id=7eb2b38c-bae4-46c5-8955-c3eabb9da313)"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 608,
+        "left": 0,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Satisfied Users",
+      "query": "select count(userid) as \"Sessions\" from usersession where userExperienceScore=\"SATISFIED\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 608,
+        "left": 228,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Tolerated Users",
+      "query": "select count(userid) as \"Sessions\" from usersession where userExperienceScore=\"TOLERATED\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 608,
+        "left": 456,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Frustrated Users",
+      "query": "select count(userid) as \"Sessions\" from usersession where userExperienceScore=\"FRUSTRATED\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 456,
+        "left": 1140,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Session",
+      "query": "select count(userid) as \"Sessions\" from usersession",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 228,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Risk Revenue",
+      "query": "select sum(doubleProperties.revenue) as \"Risk Revenue\" FROM usersession where useraction.name = \"LastStep\" and (userExperienceScore =\"TOLERATED\" or userExperienceScore =\"FRUSTRATED\" or userExperienceScore =\"UNDEFINED\")",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 304,
+        "left": 0,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Satisfied Users",
+      "query": "select count(userid) as \"Conversions\" from usersession where useraction.name in (\"LastStep\") and userExperienceScore=\"SATISFIED\" and doubleProperties.revenue>0",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 304,
+        "left": 228,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Tolerated Users",
+      "query": "select count(userid) as \"Conversions\" from usersession where useraction.name in (\"LastStep\") and userExperienceScore=\"TOLERATED\" and doubleProperties.revenue>0",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 304,
+        "left": 456,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Frustrated Users",
+      "query": "select count(userid) as \"Conversions\" from usersession where useraction.name in (\"LastStep\") and userExperienceScore=\"FRUSTRATED\" and doubleProperties.revenue>0",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 684,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Conversions",
+      "query": "select count(userid) as \"Conversions\" from usersession where useraction.name=\"LastStep\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 304,
+        "left": 912,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Nonengaged Sessions",
+      "query": "select count(userid) as \"Nonengaged Sessions\" from usersession WHERE duration > 180000 and userActionCount < 10",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 912,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Abandons",
+      "query": "select count(userid) as \"Abandons\" from usersession where useraction.name=\"Step1\" and useraction.name!=\"LastStep\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 0,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Satisfied Revenue",
+      "query": "select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"LastStep\" and userExperienceScore=\"SATISFIED\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 228,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Tolerated Revenue",
+      "query": "select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"Step1\" and useraction.name=\"LastStep\" and userExperienceScore=\"TOLERATED\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 456,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Frustrated Revenue",
+      "query": "select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"LastStep\" and userExperienceScore=\"FRUSTRATED\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 456,
+        "left": 0,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Satisfied Users",
+      "query": "select count(userid) as \"Abandons\" from usersession where useraction.name=\"Step1\" and useraction.name !=\"LastStep\" and userExperienceScore=\"SATISFIED\" and doubleProperties.revenue>0",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 456,
+        "left": 228,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Tolerated Users",
+      "query": "select count(userid) as \"Abandons\" from usersession where useraction.name=\"Step1\" and useraction.name !=\"LastStep\" and userExperienceScore=\"TOLERATED\" and doubleProperties.revenue>0",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 456,
+        "left": 456,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Frustrated Users",
+      "query": "select count(userid) as \"Abandons\" from usersession where useraction.name=\"Step1\" and useraction.name !=\"LastStep\" and userExperienceScore=\"FRUSTRATED\" and doubleProperties.revenue>0",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 456,
+        "left": 684,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Duration",
+      "query": "select AVG(duration) as \"Duration\" from useraction",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 456,
+        "left": 912,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Errors",
+      "query": "select sum(errorCount) as \"Errors\" from useraction",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "DTAQL",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 1140,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Bounces",
+      "query": "select count(userid) as \"Bounces\" from usersession where bounce=true",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 684,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "New User Revenue",
+      "query": "select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"Step1\" and useraction.name=\"LastStep\" and newUser IS true",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 912,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Returning User Revenue",
+      "query": "select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"Step1\" and useraction.name=\"LastStep\" and newUser IS false",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 1140,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Promotional User Revenue",
+      "query": "select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"LastStep\" and useraction.name=\"PromStep\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 456,
+        "left": 1368,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 🧐 [Duration Analysis](#dashboard;id=c16cb11a-22be-41ab-a336-412369ada313)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 532,
+        "left": 1368,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 🙈 [Error Analysis](#dashboard;id=8a487b1b-c491-41f7-adf2-7460165da313)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 684,
+        "left": 1368,
+        "width": 266,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 😴 [Nonengaged Analysis](#dashboard;id=7f063e1f-e142-44f1-81a0-523f7e5da313)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 760,
+        "left": 1140,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 🔎 [Diagnostics](#diagnostictools)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 760,
+        "left": 912,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 🔎 [User Sessions](#usersearchoverview)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 760,
+        "left": 228,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 🔎 [Service View](#newservices)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 760,
+        "left": 0,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 🔎 [Logs](#logmonitoring)"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 304,
+        "left": 1140,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Crashes",
+      "query": "select count(userid) as \"Crashes\" from usersession where hasCrash=true",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 608,
+        "left": 684,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "New Users",
+      "query": "select count(userid) as \"Sessions\" from usersession where newUser IS true and useraction.name =\"Step1\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 608,
+        "left": 912,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Returning Users",
+      "query": "select count(userid) as \"Sessions\" from usersession where newUser IS false and useraction.name =\"Step1\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 608,
+        "left": 1140,
+        "width": 228,
+        "height": 152
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "customName": "Promotional Users",
+      "query": "select count(userid) as \"Sessions\" from usersession where useraction.name=\"PromStep\"",
+      "type": "SINGLE_VALUE"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 1368,
+        "width": 266,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 🕴 [Executive Overview](#dashboard;id=3aa5be20-8833-4af1-a847-2f84cb5da313)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 76,
+        "left": 1368,
+        "width": 266,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 📊 [Marketing Overview](#dashboard;id=934b0dce-bbf4-443d-b0f0-e370faeda313)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 760,
+        "left": 1368,
+        "width": 228,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": null,
+        "managementZone": null
+      },
+      "markdown": "## 🌎 [Smartscape](#smartscape)"
+    }
+  ]
+}

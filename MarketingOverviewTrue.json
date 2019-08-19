@@ -197,7 +197,7 @@
         "managementZone": null
       },
       "customName": "Revenue",
-      "query": "select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"LastStep\" and useraction.name=\"PromStep\"",
+      "query": "select sum(doubleProperties.revenueproperty) as \"Revenue\" FROM usersession where useraction.name=\"LastStep\" and useraction.name=\"PromStep\"",
       "type": "SINGLE_VALUE"
     },
     {
@@ -249,7 +249,7 @@
         "managementZone": null
       },
       "customName": "Lost Revenue",
-      "query": "select sum(doubleProperties.revenue) as \"Lot Revenue\" FROM usersession where useraction.name!=\"LastStep\" and useraction.name=\"PromStep\"",
+      "query": "select sum(doubleProperties.revenueproperty) as \"Lot Revenue\" FROM usersession where useraction.name!=\"LastStep\" and useraction.name=\"PromStep\"",
       "type": "SINGLE_VALUE"
     },
     {
@@ -267,7 +267,7 @@
         "managementZone": null
       },
       "customName": "Risk Revenue",
-      "query": "select sum(doubleProperties.revenue) as \"Risk Revenue\" FROM usersession where useraction.name=\"LastStep\" and useraction.name=\"PromStep\" and userExperienceScore!=\"SATISFIED\"",
+      "query": "select sum(doubleProperties.revenueproperty) as \"Risk Revenue\" FROM usersession where useraction.name=\"LastStep\" and useraction.name=\"PromStep\" and userExperienceScore!=\"SATISFIED\"",
       "type": "SINGLE_VALUE"
     },
     {
@@ -315,7 +315,7 @@
         "managementZone": null
       },
       "customName": "Satisfied Revenue",
-      "query": "select sum(doubleProperties.revenue) as \"Satisfied Revenue\" from usersession where userExperienceScore=\"SATISFIED\" and useraction.name=\"PromStep\"",
+      "query": "select sum(doubleProperties.revenueproperty) as \"Satisfied Revenue\" from usersession where userExperienceScore=\"SATISFIED\" and useraction.name=\"PromStep\"",
       "type": "SINGLE_VALUE"
     },
     {
@@ -333,7 +333,7 @@
         "managementZone": null
       },
       "customName": "Tolerated Revenue",
-      "query": "select sum(doubleProperties.revenue) as \"Tolerated Revenue\" from usersession where userExperienceScore=\"TOLERATED\"  and useraction.name=\"PromStep\"",
+      "query": "select sum(doubleProperties.revenueproperty) as \"Tolerated Revenue\" from usersession where userExperienceScore=\"TOLERATED\"  and useraction.name=\"PromStep\"",
       "type": "SINGLE_VALUE"
     },
     {
@@ -351,7 +351,7 @@
         "managementZone": null
       },
       "customName": "Frustrated Revenue",
-      "query": "select sum(doubleProperties.revenue) as \"Frustrated Revenue\" from usersession where userExperienceScore=\"FRUSTRATED\"  and useraction.name=\"PromStep\"",
+      "query": "select sum(doubleProperties.revenueproperty) as \"Frustrated Revenue\" from usersession where userExperienceScore=\"FRUSTRATED\"  and useraction.name=\"PromStep\"",
       "type": "SINGLE_VALUE"
     }
   ]

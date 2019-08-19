@@ -99,7 +99,7 @@
         "managementZone": null
       },
       "customName": "Revenue",
-      "query": "select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"LastStep\"",
+      "query": "select sum(doubleProperties.revenueproperty) as \"Revenue\" FROM usersession where useraction.name=\"LastStep\"",
       "type": "SINGLE_VALUE"
     },
     {
@@ -117,7 +117,7 @@
         "managementZone": null
       },
       "customName": "Lost Revenue",
-      "query": "select sum(doubleProperties.revenue) as \"Lost Revenue\" FROM usersession where useraction.name!=\"LastStep\"",
+      "query": "select sum(doubleProperties.revenueproperty) as \"Lost Revenue\" FROM usersession where useraction.name!=\"LastStep\"",
       "type": "SINGLE_VALUE"
     },
     {
@@ -273,7 +273,7 @@
         "managementZone": null
       },
       "customName": "Risk Revenue",
-      "query": "select sum(doubleProperties.revenue) as \"Risk Revenue\" FROM usersession where useraction.name = \"LastStep\" and (userExperienceScore =\"TOLERATED\" or userExperienceScore =\"FRUSTRATED\" or userExperienceScore =\"UNDEFINED\")",
+      "query": "select sum(doubleProperties.revenueproperty) as \"Risk Revenue\" FROM usersession where useraction.name = \"LastStep\" and (userExperienceScore =\"TOLERATED\" or userExperienceScore =\"FRUSTRATED\" or userExperienceScore =\"UNDEFINED\")",
       "type": "SINGLE_VALUE"
     },
     {
@@ -291,7 +291,7 @@
         "managementZone": null
       },
       "customName": "Satisfied Users",
-      "query": "select count(userid) as \"Conversions\" from usersession where useraction.name in (\"LastStep\") and userExperienceScore=\"SATISFIED\" and doubleProperties.revenue>0",
+      "query": "select count(userid) as \"Conversions\" from usersession where useraction.name in (\"LastStep\") and userExperienceScore=\"SATISFIED\" and doubleProperties.revenueproperty>0",
       "type": "SINGLE_VALUE"
     },
     {
@@ -309,7 +309,7 @@
         "managementZone": null
       },
       "customName": "Tolerated Users",
-      "query": "select count(userid) as \"Conversions\" from usersession where useraction.name in (\"LastStep\") and userExperienceScore=\"TOLERATED\" and doubleProperties.revenue>0",
+      "query": "select count(userid) as \"Conversions\" from usersession where useraction.name in (\"LastStep\") and userExperienceScore=\"TOLERATED\" and doubleProperties.revenueproperty>0",
       "type": "SINGLE_VALUE"
     },
     {
@@ -327,7 +327,7 @@
         "managementZone": null
       },
       "customName": "Frustrated Users",
-      "query": "select count(userid) as \"Conversions\" from usersession where useraction.name in (\"LastStep\") and userExperienceScore=\"FRUSTRATED\" and doubleProperties.revenue>0",
+      "query": "select count(userid) as \"Conversions\" from usersession where useraction.name in (\"LastStep\") and userExperienceScore=\"FRUSTRATED\" and doubleProperties.revenueproperty>0",
       "type": "SINGLE_VALUE"
     },
     {
@@ -399,7 +399,7 @@
         "managementZone": null
       },
       "customName": "Satisfied Revenue",
-      "query": "select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"LastStep\" and userExperienceScore=\"SATISFIED\"",
+      "query": "select sum(doubleProperties.revenueproperty) as \"Revenue\" FROM usersession where useraction.name=\"LastStep\" and userExperienceScore=\"SATISFIED\"",
       "type": "SINGLE_VALUE"
     },
     {
@@ -417,7 +417,7 @@
         "managementZone": null
       },
       "customName": "Tolerated Revenue",
-      "query": "select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"Step1\" and useraction.name=\"LastStep\" and userExperienceScore=\"TOLERATED\"",
+      "query": "select sum(doubleProperties.revenueproperty) as \"Revenue\" FROM usersession where useraction.name=\"Step1\" and useraction.name=\"LastStep\" and userExperienceScore=\"TOLERATED\"",
       "type": "SINGLE_VALUE"
     },
     {
@@ -435,7 +435,7 @@
         "managementZone": null
       },
       "customName": "Frustrated Revenue",
-      "query": "select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"LastStep\" and userExperienceScore=\"FRUSTRATED\"",
+      "query": "select sum(doubleProperties.revenueproperty) as \"Revenue\" FROM usersession where useraction.name=\"LastStep\" and userExperienceScore=\"FRUSTRATED\"",
       "type": "SINGLE_VALUE"
     },
     {
@@ -453,7 +453,7 @@
         "managementZone": null
       },
       "customName": "Satisfied Users",
-      "query": "select count(userid) as \"Abandons\" from usersession where useraction.name=\"Step1\" and useraction.name !=\"LastStep\" and userExperienceScore=\"SATISFIED\" and doubleProperties.revenue>0",
+      "query": "select count(userid) as \"Abandons\" from usersession where useraction.name=\"Step1\" and useraction.name !=\"LastStep\" and userExperienceScore=\"SATISFIED\" and doubleProperties.revenueproperty>0",
       "type": "SINGLE_VALUE"
     },
     {
@@ -471,7 +471,7 @@
         "managementZone": null
       },
       "customName": "Tolerated Users",
-      "query": "select count(userid) as \"Abandons\" from usersession where useraction.name=\"Step1\" and useraction.name !=\"LastStep\" and userExperienceScore=\"TOLERATED\" and doubleProperties.revenue>0",
+      "query": "select count(userid) as \"Abandons\" from usersession where useraction.name=\"Step1\" and useraction.name !=\"LastStep\" and userExperienceScore=\"TOLERATED\" and doubleProperties.revenueproperty>0",
       "type": "SINGLE_VALUE"
     },
     {
@@ -489,7 +489,7 @@
         "managementZone": null
       },
       "customName": "Frustrated Users",
-      "query": "select count(userid) as \"Abandons\" from usersession where useraction.name=\"Step1\" and useraction.name !=\"LastStep\" and userExperienceScore=\"FRUSTRATED\" and doubleProperties.revenue>0",
+      "query": "select count(userid) as \"Abandons\" from usersession where useraction.name=\"Step1\" and useraction.name !=\"LastStep\" and userExperienceScore=\"FRUSTRATED\" and doubleProperties.revenueproperty>0",
       "type": "SINGLE_VALUE"
     },
     {
@@ -561,7 +561,7 @@
         "managementZone": null
       },
       "customName": "New User Revenue",
-      "query": "select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"Step1\" and useraction.name=\"LastStep\" and newUser IS true",
+      "query": "select sum(doubleProperties.revenueproperty) as \"Revenue\" FROM usersession where useraction.name=\"Step1\" and useraction.name=\"LastStep\" and newUser IS true",
       "type": "SINGLE_VALUE"
     },
     {
@@ -579,7 +579,7 @@
         "managementZone": null
       },
       "customName": "Returning User Revenue",
-      "query": "select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"Step1\" and useraction.name=\"LastStep\" and newUser IS false",
+      "query": "select sum(doubleProperties.revenueproperty) as \"Revenue\" FROM usersession where useraction.name=\"Step1\" and useraction.name=\"LastStep\" and newUser IS false",
       "type": "SINGLE_VALUE"
     },
     {
@@ -597,7 +597,7 @@
         "managementZone": null
       },
       "customName": "Promotional User Revenue",
-      "query": "select sum(doubleProperties.revenue) as \"Revenue\" FROM usersession where useraction.name=\"LastStep\" and useraction.name=\"PromStep\"",
+      "query": "select sum(doubleProperties.revenueproperty) as \"Revenue\" FROM usersession where useraction.name=\"LastStep\" and useraction.name=\"PromStep\"",
       "type": "SINGLE_VALUE"
     },
     {

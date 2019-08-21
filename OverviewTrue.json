@@ -25,7 +25,7 @@
       "tileType": "MARKDOWN",
       "configured": true,
       "bounds": {
-        "top": 228,
+        "top": 152,
         "left": 1368,
         "width": 228,
         "height": 38
@@ -143,7 +143,7 @@
       "tileType": "MARKDOWN",
       "configured": true,
       "bounds": {
-        "top": 304,
+        "top": 228,
         "left": 1368,
         "width": 266,
         "height": 38
@@ -159,7 +159,7 @@
       "tileType": "MARKDOWN",
       "configured": true,
       "bounds": {
-        "top": 380,
+        "top": 304,
         "left": 1368,
         "width": 228,
         "height": 38
@@ -175,7 +175,7 @@
       "tileType": "MARKDOWN",
       "configured": true,
       "bounds": {
-        "top": 608,
+        "top": 532,
         "left": 1368,
         "width": 228,
         "height": 38
@@ -596,8 +596,8 @@
         "timeframe": null,
         "managementZone": null
       },
-      "customName": "Promotional User Revenue",
-      "query": "select sum(doubleProperties.revenueproperty) as \"Revenue\" FROM usersession where useraction.name=\"LastStep\" and useraction.name=\"PromStep\"",
+      "customName": "Rage User Revenue",
+      "query": "select sum(doubleProperties.revenueproperty) as \"Revenue\" FROM usersession where useraction.name=\"LastStep\" and numberOfRageClicks>0",
       "type": "SINGLE_VALUE"
     },
     {
@@ -605,7 +605,7 @@
       "tileType": "MARKDOWN",
       "configured": true,
       "bounds": {
-        "top": 456,
+        "top": 380,
         "left": 1368,
         "width": 228,
         "height": 38
@@ -621,7 +621,7 @@
       "tileType": "MARKDOWN",
       "configured": true,
       "bounds": {
-        "top": 532,
+        "top": 456,
         "left": 1368,
         "width": 228,
         "height": 38
@@ -637,7 +637,7 @@
       "tileType": "MARKDOWN",
       "configured": true,
       "bounds": {
-        "top": 684,
+        "top": 608,
         "left": 1368,
         "width": 266,
         "height": 38
@@ -744,7 +744,7 @@
         "timeframe": null,
         "managementZone": null
       },
-      "customName": "New Users",
+      "customName": "New Funnel Users",
       "query": "select count(userid) as \"Sessions\" from usersession where newUser IS true and useraction.name =\"Step1\"",
       "type": "SINGLE_VALUE"
     },
@@ -762,7 +762,7 @@
         "timeframe": null,
         "managementZone": null
       },
-      "customName": "Returning Users",
+      "customName": "Returning Funnel Users",
       "query": "select count(userid) as \"Sessions\" from usersession where newUser IS false and useraction.name =\"Step1\"",
       "type": "SINGLE_VALUE"
     },
@@ -780,8 +780,8 @@
         "timeframe": null,
         "managementZone": null
       },
-      "customName": "Promotional Users",
-      "query": "select count(userid) as \"Sessions\" from usersession where useraction.name=\"PromStep\"",
+      "customName": "Total Funnel Users",
+      "query": "select count(userid) as \"Sessions\" from usersession where useraction.name=\"Step1\"",
       "type": "SINGLE_VALUE"
     },
     {
@@ -805,23 +805,7 @@
       "tileType": "MARKDOWN",
       "configured": true,
       "bounds": {
-        "top": 76,
-        "left": 1368,
-        "width": 266,
-        "height": 38
-      },
-      "tileFilter": {
-        "timeframe": null,
-        "managementZone": null
-      },
-      "markdown": "## 📊 [Marketing Overview](#dashboard;id=934b0dce-bbf4-443d-b0f0-e370faeda313)"
-    },
-    {
-      "name": "Markdown",
-      "tileType": "MARKDOWN",
-      "configured": true,
-      "bounds": {
-        "top": 760,
+        "top": 684,
         "left": 1368,
         "width": 228,
         "height": 38

@@ -32,6 +32,7 @@ Adding a custom dashboard into the BizOps Ovrview Dashbaord
     E. Position (1-5) - This number will replace any of the 5 bottom links in the Main Overview Dashboard<br/>
     
 Adding additional funnels:
-  1. Follow the same steps under Deployment Steps
-  2. You will be prompted for a three digit identifier. The default deployment uses 313. Chose any other set of unique digits.
-  3. Repeat as many times as needed
+  1. Important - ***Start with a fresh set of JSON files***
+  2. Follow the same steps under Deployment Steps
+  3. You will be prompted for a three digit identifier. The default deployment uses 313. Chose any other set of unique digits.
+  4. Repeat as many times as needed

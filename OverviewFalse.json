@@ -475,7 +475,7 @@
       "tileType": "MARKDOWN",
       "configured": true,
       "bounds": {
-        "top": 684,
+        "top": 608,
         "left": 1368,
         "width": 228,
         "height": 38
@@ -539,7 +539,7 @@
       "tileType": "MARKDOWN",
       "configured": true,
       "bounds": {
-        "top": 760,
+        "top": 684,
         "left": 1368,
         "width": 228,
         "height": 38

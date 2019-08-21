@@ -6,7 +6,6 @@ set "appname="
 set "revproperty="
 set "revflag=False"
 set "revenue="
-set "promstep="
 set "f1step="
 set "f2step="
 set "f3step="
@@ -28,7 +27,6 @@ set /p appname="Enter App Name (i.e. EasyTravel): "
 set /p revproperty="Do you have a session property for revenue? (Y/N): "
 if %revproperty%==Y (set /p revenue="Enter Revenue Session Property: "
 set "revflag=True")
-set /p promstep="Enter Promotion User Action: "
 set /p f1step="Enter The 1st Funnel Step User Action: "
 set /p f2step="Enter The 2nd Funnel Step User Action: "
 set /p f3step="Enter The 3rd Funnel Step User Action: "
@@ -72,8 +70,6 @@ REM Replace all appname names
 powershell -Command "Get-ChildItem -Path %CD%\*.json -recurse | ForEach {If (Get-Content $_.FullName | Select-String -Pattern 'MyApp') {(Get-Content $_ | ForEach {$_ -replace 'MyApp', '%appname%'}) | Set-Content $_ -encoding UTF8}}"
 REM Replace revenue system property name
 if %revproperty%==Y (powershell -Command "Get-ChildItem -Path %CD%\*.json -recurse | ForEach {If (Get-Content $_.FullName | Select-String -Pattern 'revenueproperty') {(Get-Content $_ | ForEach {$_ -replace 'revenueproperty', '%revenue%'}) | Set-Content $_ -encoding UTF8}}")
-REM Replace Promotion names
-powershell -Command "Get-ChildItem -Path %CD%\*.json -recurse | ForEach {If (Get-Content $_.FullName | Select-String -Pattern 'PromStep') {(Get-Content $_ | ForEach {$_ -replace 'PromStep', '%promstep%'}) | Set-Content $_ -encoding UTF8}}"
 REM Replace Funnel step names
 powershell -Command "Get-ChildItem -Path %CD%\*.json -recurse | ForEach {If (Get-Content $_.FullName | Select-String -Pattern 'Step1') {(Get-Content $_ | ForEach {$_ -replace 'Step1', '%f1step%'}) | Set-Content $_ -encoding UTF8}}"
 powershell -Command "Get-ChildItem -Path %CD%\*.json -recurse | ForEach {If (Get-Content $_.FullName | Select-String -Pattern 'Step2') {(Get-Content $_ | ForEach {$_ -replace 'Step2', '%f2step%'}) | Set-Content $_ -encoding UTF8}}"
@@ -99,7 +95,6 @@ curl -X PUT "https://%tenant%/api/config/v1/dashboards/8a487b1b-c491-41f7-adf2-7
 curl -X PUT "https://%tenant%/api/config/v1/dashboards/ba9ecfe5-e7ec-451d-a187-060a724da313" -H "accept: application/json; charset=utf-8" -H "Authorization: Api-Token %1" -H "Content-Type: application/json; charset=utf-8" -d @%CD%\ConversionAnalysisO%revflag%.json
 curl -X PUT "https://%tenant%/api/config/v1/dashboards/7eb2b38c-bae4-46c5-8955-c3eabb9da313" -H "accept: application/json; charset=utf-8" -H "Authorization: Api-Token %1" -H "Content-Type: application/json; charset=utf-8" -d @%CD%\RageAnalysis%revflag%.json
 curl -X PUT "https://%tenant%/api/config/v1/dashboards/7f063e1f-e142-44f1-81a0-523f7e5da313" -H "accept: application/json; charset=utf-8" -H "Authorization: Api-Token %1" -H "Content-Type: application/json; charset=utf-8" -d @%CD%\NonEngagedAnalysis%revflag%.json
-curl -X PUT "https://%tenant%/api/config/v1/dashboards/934b0dce-bbf4-443d-b0f0-e370faeda313" -H "accept: application/json; charset=utf-8" -H "Authorization: Api-Token %1" -H "Content-Type: application/json; charset=utf-8" -d @%CD%\MarketingOverview%revflag%.json
 curl -X PUT "https://%tenant%/api/config/v1/dashboards/6e481cc8-bea9-46ba-b1f8-23ebcc1da313" -H "accept: application/json; charset=utf-8" -H "Authorization: Api-Token %1" -H "Content-Type: application/json; charset=utf-8" -d @%CD%\Overview%revflag%.json
 if %revproperty%==Y (curl -X PUT "https://%tenant%/api/config/v1/dashboards/f8c73b94-d5ef-4cbf-bcb8-d866c91da313" -H "accept: application/json; charset=utf-8" -H "Authorization: Api-Token %1" -H "Content-Type: application/json; charset=utf-8" -d @%CD%\RevenueAnalysis.json
 curl -X PUT "https://%tenant%/api/config/v1/dashboards/834e194e-a9bc-406a-9696-40afcc0da313" -H "accept: application/json; charset=utf-8" -H "Authorization: Api-Token %1" -H "Content-Type: application/json; charset=utf-8" -d @%CD%\RiskRevenueAnalysis.json
